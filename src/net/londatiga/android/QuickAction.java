@@ -240,39 +240,23 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 		if (rootWidth == 0) {
 			rootWidth		= mRootView.getMeasuredWidth();
 		}
-		
+
 		int screenWidth 	= mWindowManager.getDefaultDisplay().getWidth();
 		int screenHeight	= mWindowManager.getDefaultDisplay().getHeight();
-		
-		//automatically get X coord of popup (top left)
-		if ((anchorRect.left + rootWidth) > screenWidth) {
-			xPos 		= anchorRect.left - (rootWidth-anchor.getWidth());			
-			xPos 		= (xPos < 0) ? 0 : xPos;
-			
-			arrowPos 	= anchorRect.centerX()-xPos;
-			
-		}
-		else {
-			// Left edge of screen.
-			if (anchorRect.centerX() - rootWidth < 0) {
-				// Midway between edge of screen and anchor.
-				xPos = anchorRect.left / 2;
-			}
-			else
-			{
-				xPos = anchorRect.centerX() - (rootWidth/2);
-			}
 
-			// Not sure what the purpose of this check is for.
-//			if (anchor.getWidth() > rootWidth) {
-//				xPos = anchorRect.centerX() - (rootWidth/2);
-//			} else {
-//				xPos = anchorRect.left;
-//			}
-			
-			arrowPos = anchorRect.centerX()-xPos;
+		// Right edge of screen bounds.
+		if ((anchorRect.left + rootWidth) > screenWidth)
+		{
+			xPos = screenWidth - rootWidth;
+			arrowPos = anchorRect.centerX() - xPos;
 		}
-		
+		else
+		{
+			xPos = anchorRect.centerX() - (rootWidth / 2);
+			xPos = (xPos < 0) ? 0 : xPos;
+			arrowPos = anchorRect.centerX() - xPos;
+		}
+
 		int dyTop			= anchorRect.top;
 		int dyBottom		= screenHeight - anchorRect.bottom;
 
