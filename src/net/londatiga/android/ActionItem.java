@@ -19,6 +19,7 @@ public class ActionItem {
 	private int actionId = -1;
     private boolean selected;
     private boolean sticky;
+	private boolean header = false;
 	
     /**
      * Constructor
@@ -32,6 +33,13 @@ public class ActionItem {
         this.icon = icon;
         this.actionId = actionId;
     }
+
+	public ActionItem(int actionId, String title, Drawable icon, boolean header) {
+		this.title = title;
+		this.icon = icon;
+		this.actionId = actionId;
+		this.header = header;
+	}
     
     /**
      * Constructor
@@ -135,7 +143,12 @@ public class ActionItem {
     public boolean isSticky() {
         return sticky;
     }
-    
+
+	public boolean isHeader()
+	{
+		return header;
+	}
+
 	/**
 	 * Set selected flag;
 	 * 

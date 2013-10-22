@@ -1,7 +1,9 @@
 package net.londatiga.android;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -160,6 +162,13 @@ public class QuickAction extends PopupWindows implements OnDismissListener {
 		
 		ImageView img 	= (ImageView) container.findViewById(R.id.iv_icon);
 		TextView text 	= (TextView) container.findViewById(R.id.tv_title);
+
+		if (action.isHeader())
+		{
+			text.setTextAppearance(mContext, android.R.style.TextAppearance_Medium);
+			text.setTextColor(Color.WHITE);
+			text.setTypeface(null, Typeface.BOLD);
+		}
 		
 		if (icon != null) {
 			img.setImageDrawable(icon);
