@@ -79,7 +79,9 @@ public class PopupWindows {
 		mWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
 		mWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
 		mWindow.setTouchable(true);
-		mWindow.setFocusable(true);
+//		mWindow.setFocusable(true);
+//		mWindow.setOutsideTouchable(true);
+		mWindow.setFocusable(false);
 		mWindow.setOutsideTouchable(true);
 
 		mWindow.setContentView(mRootView);
